@@ -1,0 +1,39 @@
+body {
+  width: 100vw;
+  height: auto;
+  margin: 0;
+}
+
+.controls {
+  display: inline-block;
+}
+
+button {
+  background: white;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  cursor: pointer;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1em;
+}
+
+#capture {
+  display: flex;
+  justify-content: center;
+}
+
+canvas {
+  margin: 0;
+  padding: 0;
+  height: 100vh; 
+  width: 100vw; 
+  display: block;
+  /* border: 1px solid black; */
+}
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="js/jquery.js"></script>
+  <script src="js/fabric.min.js"></script>
+  <script src="js/html2canvas.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="controls">
+    <div class="shapes">
+      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()"></button>
+      <button class="fa fa-square-o fa-lg" id="b" type="button" onclick="addBackground()"></button>
+      <button class="fa fa-font fa-lg" id="b" type="button" onclick="addText()"></button>
+    </div>
+    <div class="zindex">
+      <button class="fa fa-level-up fa-lg" id="b" type="button" value="stack up" onclick="stackUp()"></button>
+      <button class="fa fa-level-down fa-lg" id="b" type="button" value="stack down" onclick="stackDown()"></button>
+    </div>
+    <div class="options">
+      <button class="fa fa-files-o fa-lg" id="b" type="button" value="copy" onclick="copyObj()"></button>
+      <button class="fa fa fa-clipboard fa-lg" id="b" type="button" value="copy" onclick="pasteObj()"></button>
+      <button class="fa fa-times fa-lg" id="b" type="button" value="remove" onclick="deleteObj()"></button>
+      <button class="fa fa-arrow-down fa-lg" id="b" type="button" value="remove" onclick="downloadCanvas()"></button>
+
+    </div>
+  </div>
+  <div id="capture">
+    <canvas id="c"></canvas>
+  </div>
+
+  <script src="js/myScript.js"></script>
+</body>
+
+</html>
