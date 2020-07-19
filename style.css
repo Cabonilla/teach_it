@@ -1,5 +1,5 @@
 body {
-  width: 100vw;
+  width: 100%;
   height: auto;
   margin: 0;
   font-family: "Roboto";
@@ -26,13 +26,14 @@ button {
 #capture {
   display: flex;
   justify-content: center;
+  height: 100%;
 }
 
 canvas {
   margin: 0;
   padding: 0;
-  height: 100vh; 
-  width: 100vw; 
+  height: 100%; 
+  width: auto; 
   display: block;
   /* border: 1px solid black; */
 }

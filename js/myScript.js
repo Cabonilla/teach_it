@@ -1,3 +1,5 @@
+
+
 var canvas = this.__canvas = new fabric.Canvas('c', { preserveObjectStacking: true });
 var grid = 30
 
@@ -9,6 +11,17 @@ for (var i = 0; i < (1000 / grid); i++) {
   canvas.add(new fabric.Line([0, i * grid, 1000, i * grid], { selectable: false }));
 }
 
+canvas.on('mouse:wheel', function(opt) {
+  var delta = opt.e.deltaY;
+  var zoom = canvas.getZoom();
+  zoom *= 0.999 ** delta;
+  if (zoom > 20) zoom = 20;
+  if (zoom < 0.01) zoom = 0.01;
+  canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+  opt.e.preventDefault();
+  opt.e.stopPropagation();
+});
+    
 function addPaper() {
   var rect = new fabric.Rect({
     left: 50,
@@ -62,7 +75,7 @@ function addImg(e) {
     reader.onload = function(f) {
         var data = f.target.result;
         fabric.Image.fromURL(data, function(img) {
-            var oImg = img.set({ left: 50, top: 100, angle: 00 }).scale(0.1);
+            var oImg = img.set({ left: 50, top: 100, angle: 00 }).scale(0.2);
             canvas.add(oImg).renderAll();
             canvas.setActiveObject(oImg);
         });
