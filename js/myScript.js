@@ -56,6 +56,35 @@ function addText() {
   canvas.add(text);
 }
 
+function addImg(e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(f) {
+        var data = f.target.result;
+        fabric.Image.fromURL(data, function(img) {
+            var oImg = img.set({ left: 50, top: 100, angle: 00 }).scale(0.1);
+            canvas.add(oImg).renderAll();
+            canvas.setActiveObject(oImg);
+        });
+    };
+    reader.readAsDataURL(file);
+}
+
+function addVid() {
+  var rect = new fabric.Rect({
+    left: 150,
+    top: 50,
+    fill: 'white',
+    width: 100,
+    height: 65,
+    centeredTotation: true
+  });
+
+  rect.setShadow("5px 5px 15px rgb(200,200,200)");
+
+  canvas.add(rect);
+}
+
 function stackUp() {
   var obj = canvas.getActiveObject();
   canvas.bringForward(obj);

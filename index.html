@@ -13,6 +13,11 @@
 
 <body>
   <div class="controls">
+    <div class="inserts">
+      <label for="file"><i class="fa fa-picture-o fa-lg" ></i></label>
+      <input id="file" type="file" value="remove" onchange="addImg(event)"></button>
+      <button class="fa fa-file-video-o fa-lg" id="b" type="button" value="remove" onclick="addVid()"></button>
+    </div>
     <div class="shapes">
       <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()"></button>
       <button class="fa fa-square-o fa-lg" id="b" type="button" onclick="addBackground()"></button>
@@ -29,6 +34,7 @@
       <button class="fa fa-arrow-down fa-lg" id="b" type="button" value="remove" onclick="downloadCanvas()"></button>
 
     </div>
+
   </div>
   <div id="capture">
     <canvas id="c"></canvas>

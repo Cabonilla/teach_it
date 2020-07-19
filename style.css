@@ -2,6 +2,7 @@ body {
   width: 100vw;
   height: auto;
   margin: 0;
+  font-family: "Roboto";
 }
 
 .controls {
@@ -36,4 +37,14 @@ canvas {
   /* border: 1px solid black; */
 }
 
+label {
+  cursor: pointer;
+  /* Style as you please, it will become the visible UI component. */
+}
 
+#file {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+  cursor: pointer;
+}
