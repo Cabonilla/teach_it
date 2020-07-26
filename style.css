@@ -53,14 +53,22 @@ label {
 div[id^="resizable"] {
 
   display: flex;
-height: 200px;
-width: 500px;
+  height: 20em;
+  width: 30em;
   cursor: pointer;
   overflow: hidden;
-  /* background: red; */
-  padding: 2em;
-  /* background: lightgray */
+  /* background: whitesmoke; */
+  /* padding: 1em; */
+  /* background: rgb(241, 241, 241); */
   z-index: 99;
+  position: absolute;
+  
+  
+}
+
+.delete {
+  left: 22px;
+  top: 4px;
 }
 
 iframe {
@@ -79,16 +87,19 @@ pre {
     /* background: black; */
   /* padding: 10px; */
   /* resize: both; */
-  /* overflow: hidden; */
+  overflow: hidden;
   cursor: pointer;
-  /* background: blue; */
+
   height: 100%;
   width: 100%;
-  /* background: red; */
 }
 
 .controls {
   border-bottom: black solid 1px;
   padding-bottom: 1em;
   width: 100%
+}
+
+video[id^="vid"] {
+  display: none;
 }

@@ -22,7 +22,7 @@ for (var i = 0; i < (1000 / grid); i++) {
 //   opt.e.preventDefault();
 //   opt.e.stopPropagation();
 // });
-    
+
 function addPaper() {
   var rect = new fabric.Rect({
     left: 50,
@@ -71,30 +71,73 @@ function addText() {
 }
 
 function addImg(e) {
-    var file = e.target.files[0];
-    var reader = new FileReader();
-    reader.onload = function(f) {
-        var data = f.target.result;
-        fabric.Image.fromURL(data, function(img) {
-            var oImg = img.set({ left: 50, top: 100, angle: 00 }).scale(0.2);
-            canvas.add(oImg).renderAll();
-            canvas.setActiveObject(oImg);
-        });
-    };
-    reader.readAsDataURL(file);
+  var file = e.target.files[0];
+  var reader = new FileReader();
+  reader.onload = function (f) {
+    var data = f.target.result;
+    fabric.Image.fromURL(data, function (img) {
+      var oImg = img.set({ left: 50, top: 100, angle: 00 }).scale(0.2);
+      canvas.add(oImg).renderAll();
+      canvas.setActiveObject(oImg);
+    });
+  };
+  reader.readAsDataURL(file);
 }
 
 function addVid() {
-    function div () {
+  function div() {
     var capture = document.getElementById("capture")
+
     var divide = document.createElement("div")
-    divide.setAttribute("id", `resizable${id}`)
+    var del = document.createElement("a")
+    var input = document.createElement("input")
+    var video = document.createElement("video")
+    var source = document.createElement("source")
+
+
     capture.appendChild(divide)
+    divide.appendChild(del)
+    divide.appendChild(input)
+    divide.appendChild(video)
+    video.appendChild(source)
+
+
+    del.className += "delete is-small"
     divide.className += id
+
+    divide.setAttribute("id", `resizable${id}`)
+    input.setAttribute('type', "file")
+    input.setAttribute('accept', "video/*")
+    input.setAttribute('id', `vidinput${id}`)
+    video.setAttribute('id', `vid${id}`)
+
+    video.controls = true;
+    video.autoplay = true;
+
+    // vidsrc = document.getElementById("vidinput").value
+    // console.log(video)
+    // source.src = "video.mp4";
+
+
+  }
+
+  div()
 }
 
-div()
-}
+
+
+$(document).on("click", '.delete', function (event) {
+  var x = $(event.target.parentNode)
+  x.remove()
+})
+$(document).on("change", function (event) {
+  var URL = window.URL || window.webkitURL
+  var vidsrc = document.getElementById(`vidinput${id - 1}`).files[0];
+  console.log(vidsrc)
+  var videoNode = document.getElementById(`vid${id - 1}`)
+  var fileURL = URL.createObjectURL(vidsrc)
+  videoNode.src = fileURL
+})
 
 function stackUp() {
   var obj = canvas.getActiveObject();
@@ -155,79 +198,76 @@ addBackground();
 addText();
 
 function downloadCanvas() {
-	html2canvas(document.querySelector('#capture'), { backgroundColor: "white" }).then(function(canvas) {
-		saveAs(canvas.toDataURL(), 'canvas.png');
-	});
+  html2canvas(document.querySelector('#capture'), { backgroundColor: "white" }).then(function (canvas) {
+    saveAs(canvas.toDataURL(), 'canvas.png');
+  });
 }
 
 function saveAs(uri, filename) {
-	var link = document.createElement('a');
+  var link = document.createElement('a');
 
-	if (typeof link.download === 'string') {
-		link.href = uri;
-		link.download = filename;
+  if (typeof link.download === 'string') {
+    link.href = uri;
+    link.download = filename;
 
-		//Firefox requires the link to be in the body
-		document.body.appendChild(link);
+    //Firefox requires the link to be in the body
+    document.body.appendChild(link);
 
-		//simulate click
-		link.click();
+    //simulate click
+    link.click();
 
-		//remove the link when done
-		document.body.removeChild(link);
-	} else {
-		window.open(uri);
-	}
+    //remove the link when done
+    document.body.removeChild(link);
+  } else {
+    window.open(uri);
+  }
 }
 
-$(document).on("click", '#b', function() {
+$(document).on("click", '#b', function () {
   $("#resizable" + id).resizable();
-
   $("#resizable" + id).draggable();
-id += 1
+  id += 1
 })
-    
-
 
 src = document.getElementById("video1")
 
 
 function youtubeurl(url) {
 
-//   function div () {
-//     var capture = document.getElementById("capture")
-//     var divide = document.createElement("div")
-//     divide.setAttribute("id", "resizable")
-//     capture.appendChild(divide)
-// }
+  //   function div () {
+  //     var capture = document.getElementById("capture")
+  //     var divide = document.createElement("div")
+  //     divide.setAttribute("id", "resizable")
+  //     capture.appendChild(divide)
+  // }
 
-// div()
+  // div()
 
 
-  function video () {
+  function video() {
 
-      var div = document.getElementById("resizable" + (id-1))
-      var pre = document.createElement("pre")
-      pre.setAttribute("id", `myCode${id}`)
-      pre.className += id
-      div.appendChild(pre)
+    var div = document.getElementById("resizable" + (id - 1))
+    var pre = document.createElement("pre")
+    pre.setAttribute("id", `myCode${id}`)
+    pre.className += id
+    div.appendChild(pre)
   }
-  
+
   video()
-    
 
-        function getId(url) {
-          var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-          var match = url.match(regExp);
-      
-          if (match && match[2].length == 11) {
-              return match[2];
-          } else {
-              return 'error';
-          }
-      }
-      var url = document.getElementById("url").value
-      var myId = getId(url)
-      
-      $(`#myCode${id}`).html('<iframe width="560" height="315" src="//www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen id="video1"></iframe>');
+
+  function getId(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+
+    if (match && match[2].length == 11) {
+      return match[2];
+    } else {
+      return 'error';
+    }
   }
+  var url = document.getElementById("url").value
+  var myId = getId(url)
+
+  $(`#myCode${id}`).html('<iframe width="560" height="315" src="//www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen id="video1"></iframe>');
+}
