@@ -2,6 +2,7 @@
 
 var canvas = this.__canvas = new fabric.Canvas('c', { preserveObjectStacking: true });
 var grid = 30
+var id = 1
 
 canvas.setHeight(1080);
 canvas.setWidth(1920);
@@ -11,16 +12,16 @@ for (var i = 0; i < (1000 / grid); i++) {
   canvas.add(new fabric.Line([0, i * grid, 1000, i * grid], { selectable: false }));
 }
 
-canvas.on('mouse:wheel', function(opt) {
-  var delta = opt.e.deltaY;
-  var zoom = canvas.getZoom();
-  zoom *= 0.999 ** delta;
-  if (zoom > 20) zoom = 20;
-  if (zoom < 0.01) zoom = 0.01;
-  canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
-  opt.e.preventDefault();
-  opt.e.stopPropagation();
-});
+// canvas.on('mouse:wheel', function(opt) {
+//   var delta = opt.e.deltaY;
+//   var zoom = canvas.getZoom();
+//   zoom *= 0.999 ** delta;
+//   if (zoom > 20) zoom = 20;
+//   if (zoom < 0.01) zoom = 0.01;
+//   canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+//   opt.e.preventDefault();
+//   opt.e.stopPropagation();
+// });
     
 function addPaper() {
   var rect = new fabric.Rect({
@@ -84,18 +85,15 @@ function addImg(e) {
 }
 
 function addVid() {
-  var rect = new fabric.Rect({
-    left: 150,
-    top: 50,
-    fill: 'white',
-    width: 100,
-    height: 65,
-    centeredTotation: true
-  });
+    function div () {
+    var capture = document.getElementById("capture")
+    var divide = document.createElement("div")
+    divide.setAttribute("id", `resizable${id}`)
+    capture.appendChild(divide)
+    divide.className += id
+}
 
-  rect.setShadow("5px 5px 15px rgb(200,200,200)");
-
-  canvas.add(rect);
+div()
 }
 
 function stackUp() {
@@ -181,3 +179,55 @@ function saveAs(uri, filename) {
 		window.open(uri);
 	}
 }
+
+$(document).on("click", '#b', function() {
+  $("#resizable" + id).resizable();
+
+  $("#resizable" + id).draggable();
+id += 1
+})
+    
+
+
+src = document.getElementById("video1")
+
+
+function youtubeurl(url) {
+
+//   function div () {
+//     var capture = document.getElementById("capture")
+//     var divide = document.createElement("div")
+//     divide.setAttribute("id", "resizable")
+//     capture.appendChild(divide)
+// }
+
+// div()
+
+
+  function video () {
+
+      var div = document.getElementById("resizable" + (id-1))
+      var pre = document.createElement("pre")
+      pre.setAttribute("id", `myCode${id}`)
+      pre.className += id
+      div.appendChild(pre)
+  }
+  
+  video()
+    
+
+        function getId(url) {
+          var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+          var match = url.match(regExp);
+      
+          if (match && match[2].length == 11) {
+              return match[2];
+          } else {
+              return 'error';
+          }
+      }
+      var url = document.getElementById("url").value
+      var myId = getId(url)
+      
+      $(`#myCode${id}`).html('<iframe width="560" height="315" src="//www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen id="video1"></iframe>');
+  }

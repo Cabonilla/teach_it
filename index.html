@@ -6,17 +6,23 @@
   <script src="js/fabric.min.js"></script>
   <script src="js/html2canvas.js"></script>
   <link rel="stylesheet" href="style.css">
+
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
   <div class="controls">
     <div class="inserts">
-      <label for="file"><i class="fa fa-picture-o fa-lg" ></i></label>
+      <label for="file"><i class="fa fa-picture-o fa-lg"></i></label>
       <input id="file" type="file" value="remove" onchange="addImg(event)"></button>
       <button class="fa fa-file-video-o fa-lg" id="b" type="button" value="remove" onclick="addVid()"></button>
+        <input type="text" id="url" name="url" placeholder="enter youtube url"></input>
+        <input type="button" value="submit" onclick=youtubeurl(url)></button>
     </div>
     <div class="shapes">
       <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()"></button>
@@ -37,7 +43,10 @@
 
   </div>
   <div id="capture">
-    <canvas id="c"></canvas>
+    <canvas id="c">
+
+    </canvas>
+
   </div>
 
   <script src="js/myScript.js"></script>

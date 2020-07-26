@@ -49,3 +49,46 @@ label {
   z-index: -1;
   cursor: pointer;
 }
+
+div[id^="resizable"] {
+
+  display: flex;
+height: 200px;
+width: 500px;
+  cursor: pointer;
+  overflow: hidden;
+  /* background: red; */
+  padding: 2em;
+  /* background: lightgray */
+  z-index: 99;
+}
+
+iframe {
+  /* background: black; */
+  /* padding: 10px; */
+  /* resize: both; */
+  /* overflow: hidden; */
+  cursor: pointer;
+  /* background: blue; */
+  height: 100%;
+  width: 100%;
+  /* background: lightgrey; */
+}
+
+pre {
+    /* background: black; */
+  /* padding: 10px; */
+  /* resize: both; */
+  /* overflow: hidden; */
+  cursor: pointer;
+  /* background: blue; */
+  height: 100%;
+  width: 100%;
+  /* background: red; */
+}
+
+.controls {
+  border-bottom: black solid 1px;
+  padding-bottom: 1em;
+  width: 100%
+}
