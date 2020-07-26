@@ -92,18 +92,17 @@ function addVid() {
     var del = document.createElement("a")
     var input = document.createElement("input")
     var video = document.createElement("video")
-    var source = document.createElement("source")
 
 
     capture.appendChild(divide)
     divide.appendChild(del)
     divide.appendChild(input)
     divide.appendChild(video)
-    video.appendChild(source)
 
 
     del.className += "delete is-small"
     divide.className += id
+    video.className += "hide"
 
     divide.setAttribute("id", `resizable${id}`)
     input.setAttribute('type', "file")
@@ -132,11 +131,15 @@ $(document).on("click", '.delete', function (event) {
 })
 $(document).on("change", function (event) {
   var URL = window.URL || window.webkitURL
+  var vidsrcslim = document.getElementById(`vidinput${id - 1}`);
   var vidsrc = document.getElementById(`vidinput${id - 1}`).files[0];
-  console.log(vidsrc)
+
   var videoNode = document.getElementById(`vid${id - 1}`)
   var fileURL = URL.createObjectURL(vidsrc)
   videoNode.src = fileURL
+
+  vidsrcslim.className = "hide"
+  document.getElementById(`vid${id - 1}`).classList.remove("hide")
 })
 
 function stackUp() {
@@ -242,11 +245,17 @@ function youtubeurl(url) {
   // }
 
   // div()
+    
+  var div = document.getElementById("resizable" + (id - 1))
+  console.log(div.childNodes)
+  div.removeChild(div.childNodes[1])
+  div.removeChild(div.childNodes[1])
 
 
+  console.log(div.childNodes)
   function video() {
 
-    var div = document.getElementById("resizable" + (id - 1))
+    
     var pre = document.createElement("pre")
     pre.setAttribute("id", `myCode${id}`)
     pre.className += id

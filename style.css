@@ -53,6 +53,8 @@ label {
 div[id^="resizable"] {
 
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 20em;
   width: 30em;
   cursor: pointer;
@@ -66,9 +68,14 @@ div[id^="resizable"] {
   
 }
 
+input[id^="vidinput"]  {
+  /* background: red; */
+  width: 200px;
+  height: 25px;
+}
+
 .delete {
-  left: 22px;
-  top: 4px;
+
 }
 
 iframe {
@@ -100,6 +107,12 @@ pre {
   width: 100%
 }
 
-video[id^="vid"] {
+
+
+.hide {
   display: none;
+}
+
+a {
+  z-index: 99;
 }
