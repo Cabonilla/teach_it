@@ -64,6 +64,7 @@ div[id^="resizable"] {
   background: whitesmoke;
   z-index: 99;
   position: absolute;
+  overflow: hidden;
 }
 
 input[id^="vidinput"]  {
@@ -71,6 +72,7 @@ input[id^="vidinput"]  {
   width: 200px;
   height: 25px;
   position: absolute;
+  overflow: hidden;
 }
 
 
@@ -78,7 +80,7 @@ iframe {
   /* background: black; */
   /* padding: 10px; */
   /* resize: both; */
-  /* overflow: hidden; */
+  overflow: hidden;
   cursor: pointer;
   /* background: blue; */
   height: 100%;
@@ -86,16 +88,6 @@ iframe {
   /* background: lightgrey; */
 }
 
-pre {
-    /* background: black; */
-  /* padding: 10px; */
-  /* resize: both; */
-  overflow: hidden;
-  cursor: pointer;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
 
 .controls {
   border-bottom: black solid 1px;
@@ -116,4 +108,20 @@ a {
 
 video {
   position: absolute;
+  /* overflow: hidden; */
+}
+
+pre {
+  /* background: black; */
+/* padding: 10px; */
+/* resize: both; */
+
+cursor: pointer;
+position: absolute;
+height: 100%;
+width: 100%;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
 }
