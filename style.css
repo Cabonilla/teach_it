@@ -26,6 +26,7 @@ button {
 #capture {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 100%;
 }
 
@@ -59,9 +60,9 @@ div[id^="resizable"] {
   width: 30em;
   cursor: pointer;
   overflow: hidden;
-  /* background: whitesmoke; */
-  /* padding: 1em; */
-  /* background: rgb(241, 241, 241); */
+  /* background: red; */
+  padding: 1em;
+  background: whitesmoke;
   z-index: 99;
   position: absolute;
   
@@ -72,11 +73,9 @@ input[id^="vidinput"]  {
   /* background: red; */
   width: 200px;
   height: 25px;
+  position: absolute;
 }
 
-.delete {
-
-}
 
 iframe {
   /* background: black; */
@@ -96,7 +95,7 @@ pre {
   /* resize: both; */
   overflow: hidden;
   cursor: pointer;
-
+  position: absolute;
   height: 100%;
   width: 100%;
 }
@@ -115,4 +114,9 @@ pre {
 
 a {
   z-index: 99;
+  position: absolute;
+}
+
+video {
+  position: absolute;
 }
