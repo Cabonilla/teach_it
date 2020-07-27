@@ -52,7 +52,6 @@ label {
 }
 
 div[id^="resizable"] {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,8 +64,6 @@ div[id^="resizable"] {
   background: whitesmoke;
   z-index: 99;
   position: absolute;
-  
-  
 }
 
 input[id^="vidinput"]  {
