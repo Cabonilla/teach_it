@@ -23,6 +23,7 @@ button {
   border-bottom: black solid 1px;
   padding-bottom: 1em;
   width: 100%;
+  /* position: fixed; */
 }
 
 #capture {
