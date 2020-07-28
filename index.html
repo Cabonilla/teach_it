@@ -2,10 +2,13 @@
 <html lang="en">
 
 <head>
-  <script src="js/jquery.js"></script>
-  <script src="js/fabric.min.js"></script>
-  <script src="js/html2canvas.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <script src="libs/jquery.js"></script>
+  <!-- <script src="libs/fabric-brush.min.js"></script>
+  <script src="libs/fabric.min.js"></script> -->
+  <script src="libs/html2canvas.js"></script>
+  <!-- <script src="libs/dat.gui.js"></script> -->
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -15,17 +18,25 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
+<link rel="stylesheet" href="stylesheets/dat.gui.css">
+  <link rel="stylesheet" href="stylesheets/github-light.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 
 <body>
+  
 
   <div class="controls">
+    <div class="draw">
+      <button class="fa fa-paint-brush" id="b" type="button" onclick="addDraw()" data-toggle="tooltip" data-placement="bottom" title="drawing mode on/off"></button>
+    </div>
     <div class="inserts">
+      
       <!-- <div class="column">
         <button class="button is-primary has-tooltip-bottom" data-tooltip="Tooltip Text">bottom tooltip</button>
       </div> -->
-      <label><i class="fa fa-picture-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="add picture"><input id="file" type="file" value="remove" onchange="addImg(event)"></button></i></label>
+      <label><i class="fa fa-picture-o fa-lg" id="b" data-toggle="tooltip" data-placement="bottom" title="add picture"><input id="file" type="file" value="remove" onchange="addImg(event)"></button></i></label>
       
       <button class="fa fa-file-video-o fa-lg" id="b" type="button" value="remove" onclick="addVid()" data-toggle="tooltip" data-placement="bottom" title="add video"></button>
         <input type="text" id="url" name="url" placeholder="enter youtube url"></input>
@@ -42,11 +53,49 @@
       <button class="fa fa-level-down fa-lg" id="b" type="button" value="stack down" onclick="stackDown()" data-toggle="tooltip" data-placement="bottom" title="stack object down"></button>
     </div>
     <div class="options">
-      <button class="fa fa-files-o fa-lg" id="b" type="button" value="copy" onclick="copyObj()" data-toggle="tooltip" data-placement="bottom" title="copy object"></button>
-      <button class="fa fa fa-clipboard fa-lg" id="b" type="button" value="copy" onclick="pasteObj()" data-toggle="tooltip" data-placement="bottom" title="paste object"></button>
-      <button class="fa fa-times fa-lg" id="b" type="button" value="remove" onclick="deleteObj()" data-toggle="tooltip" data-placement="bottom" title="delete object"></button>
+      <button class="fa fa-files-o fa-lg" id="b" type="button" value="copy" onclick="copyObj()" data-toggle="tooltip" data-placement="bottom" title="copy object(s)"></button>
+      <button class="fa fa fa-clipboard fa-lg" id="b" type="button" value="copy" onclick="pasteObj()" data-toggle="tooltip" data-placement="bottom" title="paste object(s)"></button>
+      <button class="fa fa-times fa-lg" id="b" type="button" value="remove" onclick="deleteObj()" data-toggle="tooltip" data-placement="bottom" title="delete object(s)"></button>
+      <button class="fa fa-eraser fa-lg" id="clear-canvas" type="button" value="remove" data-toggle="tooltip" data-placement="bottom" title="clear canvas"></button>
       <button class="fa fa-arrow-down fa-lg" id="b" type="button" value="remove" onclick="downloadCanvas()" data-toggle="tooltip" data-placement="bottom" title="download canvas"></button>
 
+    </div>
+    <div id="tools" class="tools">
+      <!-- <button id="drawing-mode" class="btn btn-info">Cancel drawing mode</button><br> -->
+      <!-- <button id="clear-canvas" class="btn btn-info">Clear</button><br> -->
+    
+      <div id="drawing-mode-options">
+        <label for="drawing-mode-selector">Mode:</label>
+        <select id="drawing-mode-selector">
+          <option>Pencil</option>
+          <option>Circle</option>
+          <option>Spray</option>
+          <option>Pattern</option>
+    
+          <option>hline</option>
+          <option>vline</option>
+          <option>square</option>
+          <option>diamond</option>
+          <option>texture</option>
+        </select><br>
+    
+        <label for="drawing-color">Line color:</label>
+        <input type="color" value="#000000" id="drawing-color"><br>
+
+        <label for="drawing-line-width">Line width:</label>
+        <input type="range" value="30" min="0" max="150" id="drawing-line-width"><br>
+    
+        
+    
+        <label for="drawing-shadow-color">Shadow color:</label>
+        <input type="color" value="#000000" id="drawing-shadow-color"><br>
+    
+        <label for="drawing-shadow-width">Shadow width:</label>
+        <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-width"><br>
+    
+        <label for="drawing-shadow-offset">Shadow offset:</label>
+        <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-offset"><br>
+      </div>
     </div>
 
   </div>
@@ -56,8 +105,11 @@
     </canvas>
 
   </div>
-
-  <script src="js/myScript.js"></script>
+       -->
+      <script src="libs/fabric.min.js"></script>
+      <script src="libs/fabric-brush.min.js"></script>
+      <script src="libs/dat.gui.js"></script>
+      <script src="libs/myScript.js"></script>
 </body>
 
 </html>
