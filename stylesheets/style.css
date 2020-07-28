@@ -6,7 +6,10 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+.lead.emoji-picker-container {
+  resize: both;
+  overflow: auto;
+}
 
 button {
   background: white;
@@ -68,6 +71,7 @@ div[id^="resizable"] {
   z-index: 97;
   position: absolute;
   overflow: hidden;
+  align-self: start;
 }
 
 input[id^="vidinput"]  {
@@ -143,4 +147,9 @@ pre::-webkit-scrollbar {
 
 #drawing-mode {
   display: hide;
+}
+
+.emoji-wysiwyg-editor.form-control {
+  resize: both;
+  overflow: hidden;
 }

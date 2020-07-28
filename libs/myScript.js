@@ -241,6 +241,18 @@ function addPaper() {
   canvas.add(rect);
 }
 
+function heightAdjust() {
+  var height = document.getElementById("height")
+  if (height.value !== "") {
+    canvas.setHeight(height.value)
+    height.value = ""
+    console.log("Oh, hello Laverne.")
+  } else {
+    console.log("Hello Laverne.")
+    canvas.setHeight(height.placeholder)
+  }
+}
+
 function addBackground() {
   var rect = new fabric.Rect({
     left: 150,
@@ -483,3 +495,4 @@ function youtubeurl(url) {
 
   $(`#myCode${id}`).html('<iframe width="560" height="315" src="//www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen id="video1"></iframe>');
 }
+
