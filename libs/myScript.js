@@ -140,8 +140,38 @@ function addDraw() {
       return patternCanvas;
     };
 
-    var crayonBrush = new fabric.CrayonBrush(canvas);
-    crayonBrush.getPatternSrc = function () {
+    var CrayonBrush = new fabric.CrayonBrush(canvas);
+    CrayonBrush.getPatternSrc = function () {
+
+      var patternCanvas = fabric.document.createElement('canvas');
+      var ctx = patternCanvas.getContext('2d');
+
+      ctx.width = 70;
+      ctx.opacity = 0.6;
+      ctx.color = "#ff0000"
+
+      return patternCanvas;
+    };
+    var InkBrush = new fabric.InkBrush(canvas);
+    InkBrush.getPatternSrc = function () {
+
+      ctx.width = 70;
+      ctx.opacity = 0.6;
+      ctx.color = "#ff0000"
+
+      return patternCanvas;
+    };
+    var MarkerBrush = new fabric.MarkerBrush(canvas);
+    MarkerBrush.getPatternSrc = function () {
+
+      ctx.width = 70;
+      ctx.opacity = 0.6;
+      ctx.color = "#ff0000"
+
+      return patternCanvas;
+    };
+    var RealSprayBrush = new fabric.RealSprayBrush(canvas);
+    RealSprayBrush.getPatternSrc = function () {
 
       ctx.width = 70;
       ctx.opacity = 0.6;
@@ -198,10 +228,16 @@ function addDraw() {
       canvas.freeDrawingBrush = texturePatternBrush;
     }
     else if (this.value === 'CrayonBrush') {
-      canvas.freeDrawingBrush = crayonBrush;
+      canvas.freeDrawingBrush = CrayonBrush;
     }
-    else if (this.value === 'texture') {
-      canvas.freeDrawingBrush = texturePatternBrush;
+    else if (this.value === 'InkBrush') {
+      canvas.freeDrawingBrush = InkBrush;
+    }
+    else if (this.value === 'MarkerBrush') {
+      canvas.freeDrawingBrush = MarkerBrush;
+    }
+    else if (this.value === 'RealSprayBrush') {
+      canvas.freeDrawingBrush = RealSprayBrush;
     }
     else {
       canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);

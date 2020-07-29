@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="stylesheets/dat.gui.css">
   <link rel="stylesheet" href="stylesheets/github-light.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-  
+
   <link href="stylesheets/emoji.scss" rel="stylesheet">
   <link href="stylesheets/emoji.css.map" rel="stylesheet">
   <link href="stylesheets/emoji.css" rel="stylesheet">
@@ -65,15 +65,15 @@
         data-placement="bottom" title="add paper"></button>
       <button class="fa fa-square-o fa-lg" id="b" type="button" onclick="addBackground()" data-toggle="tooltip"
         data-placement="bottom" title="add poster"></button>
-        <button class="fa fa-font fa-lg" id="b" type="text" onclick="addText()" data-toggle="tooltip"
+      <button class="fa fa-font fa-lg" id="b" type="text" onclick="addText()" data-toggle="tooltip"
         data-placement="bottom" title="add text"></button>
-        <button class="fa fa-smile-o fa-lg" id="b" type="text" onclick="addMoji()" data-toggle="tooltip"
+      <button class="fa fa-smile-o fa-lg" id="b" type="text" onclick="addMoji()" data-toggle="tooltip"
         data-placement="bottom" title="add emojis"></button>
-        <input id="emojis" type="button" data-emojiable="true" data-emoji-input="unicode"/>
+      <input id="emojis" type="button" data-emojiable="true" data-emoji-input="unicode" />
       <!-- <button id="ghost" type="button" data-toggle="tooltip" data-placement="bottom" title="add emoji"><input
           type="textarea" data-emojiable="true" data-emoji-input="unicode" /></button> -->
 
-      
+
     </div>
     <div class="zindex">
       <button class="fa fa-level-up fa-lg" id="b" type="button" value="stack up" onclick="stackUp()"
@@ -114,6 +114,8 @@
 
           <option id="choice">CrayonBrush</option>
           <option id="choice">InkBrush</option>
+          <option id="choice">MarkerBrush</option>
+          <option id="choice">RealSprayBrush</option>
         </select><br>
 
         <label for="drawing-color">Line color:</label>
@@ -144,19 +146,19 @@
   </div>
 
 
-  
-  
-  
-  
-  
+
+
+
+
+
   <script src="libs/dat.gui.js"></script>
-  
+
   <!-- <script src="libs/config.js"></script>
   <script src="libs/util.js"></script>
   <script src="libs/jquery.emojiarea.js"></script> -->
   <script src="libs/emoji-picker.js"></script>
   <script>
-    $(function() {
+    $(function () {
       // Initializes and creates emoji set from sprite sheet
       window.emojiPicker = new EmojiPicker.EmojiPicker({
         emojiable_selector: '[data-emojiable=true]',
@@ -171,8 +173,10 @@
     });
   </script>
   <script src="libs/fabric.min.js"></script>
-    <script src="libs/fabric-brush.min.js"></script>
-    
+  <script src="libs/fabric-brush.min.js"></script>
+  
+  
+
   <script src="libs/myScript.js"></script>
 </body>
 
