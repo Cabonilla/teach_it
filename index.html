@@ -101,16 +101,19 @@
       <div id="drawing-mode-options">
         <label for="drawing-mode-selector">Mode:</label>
         <select id="drawing-mode-selector">
-          <option>Pencil</option>
-          <option>Circle</option>
-          <option>Spray</option>
-          <option>Pattern</option>
+          <option id="choice">Pencil</option>
+          <option id="choice">Circle</option>
+          <option id="choice">Spray</option>
+          <option id="choice">Pattern</option>
 
-          <option>hline</option>
-          <option>vline</option>
-          <option>square</option>
-          <option>diamond</option>
-          <option>texture</option>
+          <option id="choice">hline</option>
+          <option id="choice">vline</option>
+          <option id="choice">square</option>
+          <option id="choice">diamond</option>
+          <option id="choice">texture</option>
+
+          <option id="choice">CrayonBrush</option>
+          <option id="choice">InkBrush</option>
         </select><br>
 
         <label for="drawing-color">Line color:</label>
@@ -139,9 +142,13 @@
     </canvas>
 
   </div>
-  -->
-  <script src="libs/fabric.min.js"></script>
-  <script src="libs/fabric-brush.min.js"></script>
+
+
+  
+  
+  
+  
+  
   <script src="libs/dat.gui.js"></script>
   
   <!-- <script src="libs/config.js"></script>
@@ -163,6 +170,9 @@
       window.emojiPicker.discover();
     });
   </script>
+  <script src="libs/fabric.min.js"></script>
+    <script src="libs/fabric-brush.min.js"></script>
+    
   <script src="libs/myScript.js"></script>
 </body>
 

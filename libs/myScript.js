@@ -140,6 +140,16 @@ function addDraw() {
       return patternCanvas;
     };
 
+    var crayonBrush = new fabric.CrayonBrush(canvas);
+    crayonBrush.getPatternSrc = function () {
+
+      ctx.width = 70;
+      ctx.opacity = 0.6;
+      ctx.color = "#ff0000"
+
+      return patternCanvas;
+    };
+
     var diamondPatternBrush = new fabric.PatternBrush(canvas);
     diamondPatternBrush.getPatternSrc = function () {
 
@@ -183,6 +193,12 @@ function addDraw() {
     }
     else if (this.value === 'diamond') {
       canvas.freeDrawingBrush = diamondPatternBrush;
+    }
+    else if (this.value === 'texture') {
+      canvas.freeDrawingBrush = texturePatternBrush;
+    }
+    else if (this.value === 'CrayonBrush') {
+      canvas.freeDrawingBrush = crayonBrush;
     }
     else if (this.value === 'texture') {
       canvas.freeDrawingBrush = texturePatternBrush;
@@ -565,3 +581,4 @@ function addMoji() {
 
 
 }
+
