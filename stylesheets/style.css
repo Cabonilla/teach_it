@@ -193,3 +193,5 @@ pre::-webkit-scrollbar {
   width: 380px;
   /* opacity: 50%; */
 }
+
+button:focus { outline-style: none; }

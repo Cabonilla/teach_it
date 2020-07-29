@@ -30,6 +30,7 @@ for (var i = 0; i < (1000 / grid); i++) {
 //   opt.e.preventDefault();
 //   opt.e.stopPropagation();
 // });
+
 var drawing = document.getElementById("drawing")
 
 // $(document).on('click', '.draw', function() {
@@ -56,14 +57,18 @@ var drawing = document.getElementById("drawing")
 // };
 $("#tools").draggable()
 $("#tools").css("position", "absolute")
+$('#drawing-line-width').attr("class", "slider is-fullwidth")
 function addDraw() {
   canvas.isDrawingMode = !canvas.isDrawingMode;
+  
   if (canvas.isDrawingMode) {
     document.getElementById("tools").removeAttribute("class")
   }
   else {
     document.getElementById("tools").className += "tools";
-    $("#tools").attr("position", "absolute")
+    
+    // $('#drawing-line-width').attr("class", "slider is-fullwidth")
+
   }
 
   var $ = function (id) { return document.getElementById(id) };
@@ -249,9 +254,9 @@ function heightAdjust() {
   if (height.value !== "") {
     canvas.setHeight(height.value)
     height.value = ""
-    console.log("Oh, hello Laverne.")
+    // console.log("Oh, hello Laverne.")
   } else {
-    console.log("Hello Laverne.")
+    // console.log("Hello Laverne.")
     canvas.setHeight(height.placeholder)
   }
 }
@@ -464,12 +469,12 @@ function youtubeurl(url) {
   // div()
 
   var div = document.getElementById("resizable" + (id - 1))
-  console.log(div.childNodes)
+  // console.log(div.childNodes)
   div.removeChild(div.childNodes[1])
   div.removeChild(div.childNodes[1])
 
 
-  console.log(div.childNodes)
+  // console.log(div.childNodes)
   function video() {
 
 
@@ -502,10 +507,10 @@ function clicker() {
   var emojis = document.querySelector(".emoji-wysiwyg-editor").childNodes.length
   var emojicon = document.getElementById("emojicon")
   console.log(emojicon)
-  emojicon.onclick = function () { console.log("Hello.") };
+  // emojicon.onclick = function () { console.log("Hello.") };
   if (emojis > 0) {
     var clicked = document.querySelector(".emoji-items").getElementsByTagName("a")
-    console.log(clicked)
+    // console.log(clicked)
 
     var emojiimg = document.querySelector(".emoji-wysiwyg-editor").innerText
 
@@ -535,7 +540,11 @@ function clicker() {
 
 $(window).on("load", function () {
   var emojiPicker = document.querySelector(".emoji-picker-icon")
+  // $('.emoji-picker-icon').click(function(event) {
+  //   event.preventDefault();
+  // })
   emojiPicker.setAttribute("onclick", "clicker()")
+
 })
 
 function addMoji() {
