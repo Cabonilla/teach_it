@@ -195,3 +195,53 @@ pre::-webkit-scrollbar {
 }
 
 button:focus { outline-style: none; }
+
+#drawing-line-width,
+ #drawing-shadow-width,
+ #drawing-shadow-offset
+ {
+  -webkit-appearance: none;
+  width: 45%;
+  height: 10px;
+  border-radius: 5px;
+  background: rgb(228,228,228);
+  background: linear-gradient(90deg, rgba(228,228,228,1) 0%, rgba(175,175,175,1) 100%);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  margin-left: 10px
+}
+
+#drawing-line-width:hover,
+#drawing-shadow-width:hover,
+#drawing-shadow-offset:hover
+ {
+  opacity: 1;
+}
+
+#drawing-line-width::-webkit-slider-thumb, 
+#drawing-shadow-width::-webkit-slider-thumb, 
+#drawing-shadow-offset::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background: url('contrast.svg');
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+#drawing-line-width::-moz-range-thumb,
+#drawing-shadow-width::-moz-range-thumb,
+#drawing-shadow-offset::-moz-range-thumb
+ {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  
+  background: url('contrast.svg');
+  background-color: whitesmoke;
+  cursor: pointer;
+}

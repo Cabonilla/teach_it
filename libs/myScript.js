@@ -58,6 +58,9 @@ var drawing = document.getElementById("drawing")
 $("#tools").draggable()
 $("#tools").css("position", "absolute")
 $('#drawing-line-width').attr("class", "slider is-fullwidth")
+function clearCanvas() {
+  canvas.clear()
+}
 function addDraw() {
   canvas.isDrawingMode = !canvas.isDrawingMode;
   
