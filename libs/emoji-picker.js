@@ -340,7 +340,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     style += 'height:' + iconSize + 'px;';
     style += 'background:url(\'' + filename.replace('!', category) + '\') ' + xoffset + 'px ' + yoffset + 'px no-repeat;';
     style += 'background-size:' + scaledWidth + 'px ' + scaledHeight + 'px;';
-    return '<img src="' + blankGifPath + '" class="img" style="' + style + '" alt="' + util.htmlEntities(name) + '">';
+    return '<img src="' + blankGifPath + '" class="img" id="img" style="' + style + '" alt="' + util.htmlEntities(name) + '">';
   };
 
   $.emojiarea.createIcon = EmojiArea.createIcon;
@@ -701,7 +701,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     if (category > 0) {
       for (var key in options) {
         if (options.hasOwnProperty(key) && options[key][0] === category - 1) {
-          html.push('<a href="javascript:void(0)" title="' + util.htmlEntities(key) + '">' + EmojiArea.createIcon(options[key], true) + '<span class="label">' + util.htmlEntities(key) + '</span></a>');
+          html.push('<a href="javascript:void(0)" id="emojicon"  title="' + util.htmlEntities(key) + '">' + EmojiArea.createIcon(options[key], true) + '<span class="label">' + util.htmlEntities(key) + '</span></a>');
         }
       }
       updateItems();
@@ -712,7 +712,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         for (i = 0; i < curEmojis.length; i++) {
           key = curEmojis[i];
           if (options[key]) {
-            html.push('<a href="javascript:void(0)" title="' + util.htmlEntities(key) + '">' + EmojiArea.createIcon(options[key], true) + '<span class="label">' + util.htmlEntities(key) + '</span></a>');
+            html.push('<a href="javascript:void(0)" id="emojicon" title="' + util.htmlEntities(key) + '">' + EmojiArea.createIcon(options[key], true) + '<span class="label">' + util.htmlEntities(key) + '</span></a>');
           }
         }
         updateItems();
@@ -748,7 +748,7 @@ var EmojiPicker = function () {
     if (options == null) {
       options = {};
     }
-    $.emojiarea.iconSize = options.iconSize != null ? options.iconSize : 25;
+    $.emojiarea.iconSize = options.iconSize != null ? options.iconSize : 40;
     $.emojiarea.assetsPath = options.assetsPath != null ? options.assetsPath : '';
     this.generateEmojiIconSets(options);
     if (!options.emojiable_selector) {
