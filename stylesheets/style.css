@@ -184,12 +184,12 @@ pre::-webkit-scrollbar {
 }
 
 .emoji-picker-icon {
-  /* top: -.55em; */
+  top: -.25em;
   font-size: 50px;
-  left: -7em;
+  right: -1em;
 }
 
 #controls > div.shapes > div > div.emoji-menu {
   width: 380px;
-  opacity: 50%;
+  /* opacity: 50%; */
 }
