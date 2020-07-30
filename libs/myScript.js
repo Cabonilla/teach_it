@@ -665,11 +665,15 @@ document.onkeydown = function(e) {
       break;
 
       case 90: // down
-      undo()
+      if (canvas.isDrawingMode == true) {
+        undo()
+      }
       break;
 
       case 89: // down
-      redo()
+      if (canvas.isDrawingMode == true) {
+        redo()
+      }
       break;
 
       default: return; // exit this handler for other keys
