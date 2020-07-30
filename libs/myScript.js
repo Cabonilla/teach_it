@@ -585,7 +585,7 @@ function clicker() {
   
   var emojis = document.querySelector(".emoji-wysiwyg-editor").childNodes.length
   var emojicon = document.getElementById("emojicon")
-  console.log(emojicon)
+  // console.log(emojicon)
   // emojicon.onclick = function () { console.log("Hello.") };
   if (emojis > 0) {
     var clicked = document.querySelector(".emoji-items").getElementsByTagName("a")
