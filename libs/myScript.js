@@ -1,10 +1,9 @@
 
-
 window.brush = null;
 var canvas = this.__canvas = new fabric.Canvas('c', {
   preserveObjectStacking: true,
   isDrawingMode: false,
-  // hoverCursor: "pointer",
+  hoverCursor: "pointer",
   // selection: false 
 });
 var grid = 30
@@ -19,6 +18,31 @@ for (var i = 0; i < (1000 / grid); i++) {
   canvas.add(new fabric.Line([i * grid, 0, i * grid, 1000], { selectable: false }));
   canvas.add(new fabric.Line([0, i * grid, 1000, i * grid], { selectable: false }));
 }
+
+
+canvas.on('object:added',function(){
+  if(!isRedoing){
+    h = [];
+  }
+  isRedoing = false;
+});
+
+var isRedoing = false;
+var h = [];
+function undo(){
+  if(canvas._objects.length>0){
+   h.push(canvas._objects.pop());
+   canvas.renderAll();
+  }
+}
+function redo(){
+  
+  if(h.length>0){
+    isRedoing = true;
+   canvas.add(h.pop());
+  }
+}
+
 
 // canvas.on('mouse:wheel', function(opt) {
 //   var delta = opt.e.deltaY;
@@ -618,3 +642,37 @@ function addMoji() {
 
 }
 
+document.onkeydown = function(e) {
+  switch(e.which) {
+      case 8: // left
+      deleteObj();
+      break;
+
+      case 67: // up
+      copyObj();
+      break;
+
+      case 86: // right
+      pasteObj();
+      break;
+
+      case 38: // down
+      stackUp()
+      break;
+
+      case 40: // down
+      stackDown()
+      break;
+
+      case 90: // down
+      undo()
+      break;
+
+      case 89: // down
+      redo()
+      break;
+
+      default: return; // exit this handler for other keys
+  }
+  e.preventDefault(); // prevent the default action (scroll / move caret)
+};
