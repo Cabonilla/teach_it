@@ -358,13 +358,11 @@ function addBackground() {
 function toFront() {
   var obj = canvas.getActiveObject();
   canvas.bringToFront(obj)
-  // console.log("hello")
 }
 
 function toBack() {
   var obj = canvas.getActiveObject();
   canvas.sendToBack(obj)
-  // console.log("hello")
 }
 
 function addText() {
@@ -719,12 +717,12 @@ function downloadSVGCanvas() {
 
 
 function dark() {
-  var canvasw = canvas.width
-  var canvash = canvas.height
+  var canvasw = canvas.width + 10
+  var canvash = canvas.height + 20
   console.log(canvash, canvasw)
   var rect = new fabric.Rect({
-    left: 0,
-    top: 0,
+    left: -5,
+    top: -10,
     fill: 'black',
     width: canvasw,
     height: canvash
@@ -735,12 +733,12 @@ function dark() {
 }
 
 function light() {
-  var canvasw = canvas.width
-  var canvash = canvas.height
+  var canvasw = canvas.width + 10
+  var canvash = canvas.height + 20
   console.log(canvash, canvasw)
   var rect = new fabric.Rect({
-    left: 0,
-    top: 0,
+    left: -5,
+    top: -10,
     fill: 'white',
     width: canvasw,
     height: canvash
@@ -748,4 +746,11 @@ function light() {
   canvas.add(rect);
   $("#light").hide()
   $("#dark").show()
+}
+
+function instructions() {
+  fabric.Image.fromURL('instructions.jpg', function(oImg) {
+    canvas.add(oImg.scale(0.5));
+  });
+
 }

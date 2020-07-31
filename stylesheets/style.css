@@ -248,9 +248,14 @@ button:focus { outline-style: none; }
 
 #outfitChange {
   position: absolute;
-  right: 10px;
+  right: 40px;
 }
 
 #light {
   display: none;
+}
+
+#question {
+  right: 10px;
+  position: absolute;
 }
