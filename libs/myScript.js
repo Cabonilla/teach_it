@@ -754,3 +754,18 @@ function instructions() {
   });
 
 }
+
+function slideitWidth() {
+  var x = document.getElementById("drawing-line-width").value;
+  document.getElementById("info1").innerHTML = x;
+}
+
+function slideitSWidth() {
+  var y = document.getElementById("drawing-shadow-width").value;
+  document.getElementById("info2").innerHTML = y;
+}
+
+function slideitSOffset() {
+  var z = document.getElementById("drawing-shadow-offset").value;
+  document.getElementById("info3").innerHTML = z;
+}
