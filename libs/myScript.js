@@ -355,6 +355,18 @@ function addBackground() {
   canvas.add(rect);
 }
 
+function toFront() {
+  var obj = canvas.getActiveObject();
+  canvas.bringToFront(obj)
+  // console.log("hello")
+}
+
+function toBack() {
+  var obj = canvas.getActiveObject();
+  canvas.sendToBack(obj)
+  // console.log("hello")
+}
+
 function addText() {
   var text = new fabric.IText("Edit Here", {
     left: 300,
@@ -675,6 +687,15 @@ document.onkeydown = function (e) {
         redo()
       }
       break;
+      
+    case 70: // down
+      console.log("hello")
+      toFront()
+      break;
+
+    case 66: // down
+      toBack()
+      break;
 
     default: return; // exit this handler for other keys
   }
@@ -686,7 +707,7 @@ function downloadSVGCanvas() {
 
   var svgData = canvas.toSVG()
 
-  var svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
+  var svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
   var svgUrl = URL.createObjectURL(svgBlob);
   var downloadLink = document.createElement("a");
   downloadLink.href = svgUrl;
@@ -694,23 +715,23 @@ function downloadSVGCanvas() {
   document.body.appendChild(downloadLink);
   downloadLink.click();
   document.body.removeChild(downloadLink);
- }
+}
 
 
 function dark() {
- var canvasw = canvas.width
- var canvash = canvas.height
- console.log(canvash, canvasw)
- var rect = new fabric.Rect({
-  left: 0,
-  top: 0,
-  fill: 'black',
-  width: canvasw,
-  height: canvash
-});
-canvas.add(rect);
-$("#dark").hide()
-$("#light").show()
+  var canvasw = canvas.width
+  var canvash = canvas.height
+  console.log(canvash, canvasw)
+  var rect = new fabric.Rect({
+    left: 0,
+    top: 0,
+    fill: 'black',
+    width: canvasw,
+    height: canvash
+  });
+  canvas.add(rect);
+  $("#dark").hide()
+  $("#light").show()
 }
 
 function light() {
@@ -718,13 +739,13 @@ function light() {
   var canvash = canvas.height
   console.log(canvash, canvasw)
   var rect = new fabric.Rect({
-   left: 0,
-   top: 0,
-   fill: 'white',
-   width: canvasw,
-   height: canvash
- });
- canvas.add(rect);
- $("#light").hide()
- $("#dark").show()
+    left: 0,
+    top: 0,
+    fill: 'white',
+    width: canvasw,
+    height: canvash
+  });
+  canvas.add(rect);
+  $("#light").hide()
+  $("#dark").show()
 }
