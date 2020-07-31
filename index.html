@@ -57,7 +57,7 @@
         data-toggle="tooltip" data-placement="bottom" title="add video"></button>
       <input type="text" id="url" name="url" placeholder="enter youtube url"></input>
       <input type="button" value="tubify" onclick=youtubeurl(url) data-toggle="tooltip" data-placement="bottom"
-        title="add youtube video"></button>
+        title="tubify video"></button>
 
     </div>
     <div class="shapes">
@@ -92,6 +92,8 @@
         data-placement="bottom" title="clear canvas" onclick="clearCanvas()"></button>
       <button class="fa fa-arrow-down fa-lg" id="b" type="button" value="remove" onclick="downloadCanvas()"
         data-toggle="tooltip" data-placement="bottom" title="download canvas"></button>
+      <button class="fa fa-cloud-download fa-lg" id="b" type="button" value="remove" onclick="downloadSVGCanvas()"
+        data-toggle="tooltip" data-placement="bottom" title="download svg (vector) canvas"></button>
 
     </div>
     <div id="tools" class="tools">
@@ -136,8 +138,12 @@
         <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-offset"><br>
       </div>
     </div>
-
+    <div id="outfitChange" class="outfitChange">
+      <button class="fa fa-heart fa-lg" id="dark" onclick="dark()"></button>
+      <button class="fa fa-heart-o fa-lg" aria-hidden="true" id="light" onclick="light()"></button>
+    </div>
   </div>
+
   <div id="capture">
     <canvas id="c">
 
@@ -174,6 +180,7 @@
   </script>
   <script src="libs/fabric.min.js"></script>
   <script src="libs/fabric-brush.min.js"></script>
+
   
   
 

@@ -20,8 +20,8 @@ for (var i = 0; i < (1000 / grid); i++) {
 }
 
 
-canvas.on('object:added',function(){
-  if(!isRedoing){
+canvas.on('object:added', function () {
+  if (!isRedoing) {
     h = [];
   }
   isRedoing = false;
@@ -29,17 +29,17 @@ canvas.on('object:added',function(){
 
 var isRedoing = false;
 var h = [];
-function undo(){
-  if(canvas._objects.length>0){
-   h.push(canvas._objects.pop());
-   canvas.renderAll();
+function undo() {
+  if (canvas._objects.length > 0) {
+    h.push(canvas._objects.pop());
+    canvas.renderAll();
   }
 }
-function redo(){
-  
-  if(h.length>0){
+function redo() {
+
+  if (h.length > 0) {
     isRedoing = true;
-   canvas.add(h.pop());
+    canvas.add(h.pop());
   }
 }
 
@@ -87,13 +87,13 @@ function clearCanvas() {
 }
 function addDraw() {
   canvas.isDrawingMode = !canvas.isDrawingMode;
-  
+
   if (canvas.isDrawingMode) {
     document.getElementById("tools").removeAttribute("class")
   }
   else {
     document.getElementById("tools").className += "tools";
-    
+
     // $('#drawing-line-width').attr("class", "slider is-fullwidth")
 
   }
@@ -582,7 +582,7 @@ function youtubeurl(url) {
   $(`#myCode${id}`).html('<iframe width="560" height="315" src="//www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen id="video1"></iframe>');
 }
 function clicker() {
-  
+
   var emojis = document.querySelector(".emoji-wysiwyg-editor").childNodes.length
   var emojicon = document.getElementById("emojicon")
   // console.log(emojicon)
@@ -610,7 +610,7 @@ function clicker() {
   }
   document.querySelector(".emoji-wysiwyg-editor").innerText = ""
 
-  
+
 }
 
 
@@ -627,13 +627,13 @@ $(window).on("load", function () {
 })
 
 function addMoji() {
-  var panel =  $(".emoji-picker-container").css("display")
+  var panel = $(".emoji-picker-container").css("display")
   if (panel == "none") {
     $(".emoji-picker-container").show()
   } else {
     $(".emoji-picker-container").hide()
   }
-  
+
   $('.emoji-picker-container').draggable({
     cancel: '.emoji-menu'
   })
@@ -642,41 +642,89 @@ function addMoji() {
 
 }
 
-document.onkeydown = function(e) {
-  switch(e.which) {
-      case 8: // left
+document.onkeydown = function (e) {
+  switch (e.which) {
+    case 8: // left
       deleteObj();
       break;
 
-      case 67: // up
+    case 67: // up
       copyObj();
       break;
 
-      case 86: // right
+    case 86: // right
       pasteObj();
       break;
 
-      case 38: // down
+    case 38: // down
       stackUp()
       break;
 
-      case 40: // down
+    case 40: // down
       stackDown()
       break;
 
-      case 90: // down
+    case 90: // down
       if (canvas.isDrawingMode == true) {
         undo()
       }
       break;
 
-      case 89: // down
+    case 89: // down
       if (canvas.isDrawingMode == true) {
         redo()
       }
       break;
 
-      default: return; // exit this handler for other keys
+    default: return; // exit this handler for other keys
   }
   e.preventDefault(); // prevent the default action (scroll / move caret)
 };
+function downloadSVGCanvas() {
+  // console.log("hello")
+  // alert(canvas.toSVG());
+
+  var svgData = canvas.toSVG()
+
+  var svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
+  var svgUrl = URL.createObjectURL(svgBlob);
+  var downloadLink = document.createElement("a");
+  downloadLink.href = svgUrl;
+  downloadLink.download = "svgcanvas.svg";
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+ }
+
+
+function dark() {
+ var canvasw = canvas.width
+ var canvash = canvas.height
+ console.log(canvash, canvasw)
+ var rect = new fabric.Rect({
+  left: 0,
+  top: 0,
+  fill: 'black',
+  width: canvasw,
+  height: canvash
+});
+canvas.add(rect);
+$("#dark").hide()
+$("#light").show()
+}
+
+function light() {
+  var canvasw = canvas.width
+  var canvash = canvas.height
+  console.log(canvash, canvasw)
+  var rect = new fabric.Rect({
+   left: 0,
+   top: 0,
+   fill: 'white',
+   width: canvasw,
+   height: canvash
+ });
+ canvas.add(rect);
+ $("#light").hide()
+ $("#dark").show()
+}

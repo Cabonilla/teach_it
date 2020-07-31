@@ -245,3 +245,12 @@ button:focus { outline-style: none; }
   background-color: whitesmoke;
   cursor: pointer;
 }
+
+#outfitChange {
+  position: absolute;
+  right: 10px;
+}
+
+#light {
+  display: none;
+}
