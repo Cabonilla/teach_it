@@ -717,12 +717,12 @@ function downloadSVGCanvas() {
 
 
 function dark() {
-  var canvasw = canvas.width + 10
-  var canvash = canvas.height + 20
+  var canvasw = (canvas.width + 1)
+  var canvash = (canvas.height + 1)
   console.log(canvash, canvasw)
   var rect = new fabric.Rect({
-    left: -5,
-    top: -10,
+    left: -1,
+    top: -1,
     fill: 'black',
     width: canvasw,
     height: canvash
@@ -733,12 +733,12 @@ function dark() {
 }
 
 function light() {
-  var canvasw = canvas.width + 10
-  var canvash = canvas.height + 20
+  var canvasw = (canvas.width + 1)
+  var canvash = (canvas.height + 1) 
   console.log(canvash, canvasw)
   var rect = new fabric.Rect({
-    left: -5,
-    top: -10,
+    left: -1,
+    top: -1,
     fill: 'white',
     width: canvasw,
     height: canvash
