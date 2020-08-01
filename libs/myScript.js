@@ -716,37 +716,54 @@ function downloadSVGCanvas() {
 }
 
 
-function dark() {
-  var canvasw = (canvas.width + 1)
-  var canvash = (canvas.height + 1)
-  console.log(canvash, canvasw)
-  var rect = new fabric.Rect({
-    left: -1,
-    top: -1,
-    fill: 'black',
-    width: canvasw,
-    height: canvash
-  });
-  canvas.add(rect);
-  $("#dark").hide()
-  $("#light").show()
-}
 
-function light() {
-  var canvasw = (canvas.width + 1)
-  var canvash = (canvas.height + 1) 
-  console.log(canvash, canvasw)
-  var rect = new fabric.Rect({
-    left: -1,
-    top: -1,
-    fill: 'white',
-    width: canvasw,
-    height: canvash
-  });
-  canvas.add(rect);
-  $("#light").hide()
-  $("#dark").show()
-}
+
+
+
+
+$(document).on("click", '#light', function (event) {
+  function light() {
+    var canvasw = (canvas.width)
+    var canvash = (canvas.height ) 
+    console.log(canvash, canvasw)
+    var rect = new fabric.Rect({
+      left: -1,
+      top: -2,
+      fill: 'white',
+      width: canvasw,
+      height: canvash
+    });
+    canvas.add(rect);
+    console.log(rect)
+    $("#light").hide()
+    $("#dark").show()
+  }
+  light()
+})
+$(document).on("click", '#dark', function (event) {
+  function dark() {
+    var canvasw = (canvas.width )
+    var canvash = (canvas.height ) 
+    console.log(canvash, canvasw)
+    var rect = new fabric.Rect({
+      left: -1,
+      top: -2,
+      fill: 'black',
+      width: canvasw,
+      height: canvash
+    });
+    console.log(rect)
+    canvas.add(rect);
+    $("#dark").hide()
+    $("#light").show()
+  }
+  dark()
+})
+
+
+
+// $("#light").onclick = function () { light() };
+// $("#dark").onclick = function () { dark(), console.log("hello") };
 
 function instructions() {
   fabric.Image.fromURL('instructions.jpg', function(oImg) {

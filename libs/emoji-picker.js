@@ -340,7 +340,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     style += 'height:' + iconSize + 'px;';
     style += 'background:url(\'' + filename.replace('!', category) + '\') ' + xoffset + 'px ' + yoffset + 'px no-repeat;';
     style += 'background-size:' + scaledWidth + 'px ' + scaledHeight + 'px;';
-    return '<img src="' + blankGifPath + '" class="img" id="img" style="' + style + '" alt="' + util.htmlEntities(name) + '">';
+    return '<symbol src="' + blankGifPath + '" class="img" id="img" style="' + style + '" alt="' + util.htmlEntities(name) + '">';
   };
 
   $.emojiarea.createIcon = EmojiArea.createIcon;
