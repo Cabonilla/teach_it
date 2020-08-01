@@ -328,9 +328,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var column = emoji[2];
     var name = emoji[3];
     var filename = $.emojiarea.assetsPath + 'emoji_spritesheet_!.png';
-    console.log(filename)
+    // console.log(filename)
     var blankGifPath = $.emojiarea.assetsPath + 'blank.gif';
-    console.log(blankGifPath)
+    // console.log(blankGifPath)
     var iconSize = menu && _Config2.default.Mobile ? 26 : $.emojiarea.iconSize;
     var xoffset = -(iconSize * column);
     var yoffset = -(iconSize * row);
