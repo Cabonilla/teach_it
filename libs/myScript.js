@@ -786,3 +786,23 @@ function slideitSOffset() {
   var z = document.getElementById("drawing-shadow-offset").value;
   document.getElementById("info3").innerHTML = z;
 }
+
+function addWebcam() {
+
+
+  'use strict';
+
+  var video = document.getElementById(`vid${id - 1}`)
+  console.log(video)
+  if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then(function (stream) {
+        video.srcObject = stream;
+      })
+      .catch(function (err0r) {
+        console.log("Something went wrong!");
+      });
+  }
+  var hide = $(".hide")
+  hide.removeClass("hide")
+}
